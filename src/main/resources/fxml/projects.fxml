@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.freelance.controller.ProjectsController" stylesheets="@../css/style.css">
+    
+    <top>
+        <VBox styleClass="header">
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="toolbar">
+                <Button text="← Назад" onAction="#handleBack" styleClass="btn-secondary"/>
+                <Label text="📁 Мои проекты" styleClass="title">
+                    <font>
+                        <Font name="System Bold" size="24"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Экспорт в PDF" onAction="#handleExportPdf" styleClass="btn-success"/>
+                <Button text="+ Новый проект" onAction="#handleNewProject" styleClass="btn-primary"/>
+            </HBox>
+            
+            <HBox spacing="20" styleClass="stats-bar">
+                <VBox>
+                    <Label text="Общий доход" styleClass="stat-label"/>
+                    <Label fx:id="totalRevenueLabel" text="0.00 ₽" styleClass="stat-value"/>
+                </VBox>
+                <Separator orientation="VERTICAL"/>
+                <VBox>
+                    <Label text="Всего часов" styleClass="stat-label"/>
+                    <Label fx:id="totalHoursLabel" text="0.0 ч" styleClass="stat-value"/>
+                </VBox>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="15">
+            <padding>
+                <Insets top="20" right="30" bottom="20" left="30"/>
+            </padding>
+            
+            <TableView fx:id="projectsTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="nameColumn" text="Название" prefWidth="200"/>
+                    <TableColumn fx:id="clientColumn" text="Клиент" prefWidth="150"/>
+                    <TableColumn fx:id="rateColumn" text="Ставка" prefWidth="120"/>
+                    <TableColumn fx:id="hoursColumn" text="Часы" prefWidth="100"/>
+                    <TableColumn fx:id="statusColumn" text="Статус" prefWidth="120"/>
+                </columns>
+            </TableView>
+            
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Button text="Редактировать" onAction="#handleEdit" styleClass="btn-primary"/>
+                <Button text="Удалить" onAction="#handleDelete" styleClass="btn-danger"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

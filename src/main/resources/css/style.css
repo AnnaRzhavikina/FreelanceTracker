@@ -1,0 +1,285 @@
+/* Общие стили */
+.root {
+    -fx-font-family: "Inter", "SF Pro Display", "Segoe UI", "Helvetica Neue", sans-serif;
+    -fx-font-size: 14px;
+    -fx-background-color: #fafafa;
+}
+
+/* Заголовки и панели */
+.header {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e5e5e5;
+    -fx-border-width: 0 0 1 0;
+}
+
+.toolbar {
+    -fx-padding: 20 32;
+    -fx-background-color: #ffffff;
+}
+
+.title {
+    -fx-text-fill: #0a0a0a;
+    -fx-font-size: 20px;
+    -fx-font-weight: 600;
+    -fx-letter-spacing: -0.5px;
+}
+
+.stats-bar {
+    -fx-padding: 20 32;
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #e5e5e5;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* Кнопки - минималистичные */
+.button {
+    -fx-padding: 10 20;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+    -fx-font-weight: 500;
+    -fx-font-size: 13px;
+    -fx-background-insets: 0;
+    -fx-border-width: 1;
+}
+
+.btn-primary {
+    -fx-background-color: #0a0a0a;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #0a0a0a;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #262626;
+    -fx-border-color: #262626;
+}
+
+.btn-secondary {
+    -fx-background-color: transparent;
+    -fx-text-fill: #525252;
+    -fx-border-color: #d4d4d4;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #a3a3a3;
+}
+
+.btn-success {
+    -fx-background-color: transparent;
+    -fx-text-fill: #0a0a0a;
+    -fx-border-color: #d4d4d4;
+}
+
+.btn-success:hover {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #a3a3a3;
+}
+
+.btn-danger {
+    -fx-background-color: transparent;
+    -fx-text-fill: #dc2626;
+    -fx-border-color: #fca5a5;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #fef2f2;
+    -fx-border-color: #f87171;
+}
+
+/* Карточки - плоские с тонкими рамками */
+.card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #e5e5e5;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+}
+
+.stat-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-padding: 24;
+    -fx-border-color: #e5e5e5;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+}
+
+.card-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #0a0a0a;
+    -fx-padding: 0 0 12 0;
+}
+
+/* Статистика */
+.stat-label {
+    -fx-text-fill: #737373;
+    -fx-font-size: 12px;
+    -fx-font-weight: 500;
+    -fx-letter-spacing: 0.3px;
+}
+
+.stat-value {
+    -fx-font-size: 32px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #0a0a0a;
+    -fx-padding: 8 0 0 0;
+    -fx-letter-spacing: -1px;
+}
+
+/* Таблицы - минималистичные */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #e5e5e5;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+}
+
+.table-view .column-header {
+    -fx-background-color: #fafafa;
+    -fx-font-weight: 600;
+    -fx-text-fill: #0a0a0a;
+    -fx-font-size: 12px;
+    -fx-padding: 12 8;
+    -fx-border-color: #e5e5e5;
+}
+
+.table-view .table-cell {
+    -fx-padding: 12 8;
+    -fx-text-fill: #404040;
+    -fx-border-color: #f5f5f5;
+}
+
+.table-row-cell {
+    -fx-background-color: #ffffff;
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #fafafa;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #0a0a0a;
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #0a0a0a;
+}
+
+/* Формы - чистые и простые */
+.form-container {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #e5e5e5;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+}
+
+.form-label {
+    -fx-font-weight: 600;
+    -fx-text-fill: #0a0a0a;
+    -fx-font-size: 13px;
+}
+
+.text-field, .text-area, .combo-box, .date-picker {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #d4d4d4;
+    -fx-border-width: 1;
+    -fx-padding: 10 12;
+    -fx-text-fill: #0a0a0a;
+    -fx-font-size: 14px;
+}
+
+.text-field:focused, .text-area:focused, .combo-box:focused, .date-picker:focused {
+    -fx-border-color: #737373;
+    -fx-border-width: 1;
+    -fx-background-color: #ffffff;
+}
+
+.text-area {
+    -fx-padding: 12;
+}
+
+/* Prompt text */
+.text-field:prompt, .text-area:prompt {
+    -fx-prompt-text-fill: #a3a3a3;
+}
+
+/* Контент */
+.content-container {
+    -fx-padding: 32;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #0a0a0a;
+    -fx-letter-spacing: -0.3px;
+}
+
+.workload-item {
+    -fx-padding: 10 12;
+    -fx-background-color: #fafafa;
+    -fx-background-radius: 6;
+    -fx-border-color: #e5e5e5;
+    -fx-border-radius: 6;
+    -fx-border-width: 1;
+    -fx-text-fill: #404040;
+    -fx-font-size: 13px;
+}
+
+/* Separator - тонкая линия */
+.separator {
+    -fx-padding: 12 0;
+}
+
+.separator .line {
+    -fx-border-color: #e5e5e5;
+    -fx-border-width: 1 0 0 0;
+}
+
+/* ScrollPane */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:vertical {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .scroll-bar:horizontal {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #d4d4d4;
+    -fx-background-radius: 4;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #a3a3a3;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+}
+
+/* VBox spacing */
+.vbox-spacing {
+    -fx-spacing: 16;
+}
+
+/* HBox spacing */
+.hbox-spacing {
+    -fx-spacing: 16;
+}

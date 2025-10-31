@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.freelance.controller.ProjectFormController" stylesheets="@../css/style.css">
+    
+    <top>
+        <VBox styleClass="header">
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="toolbar">
+                <Label text="📝 Проект" styleClass="title">
+                    <font>
+                        <Font name="System Bold" size="24"/>
+                    </font>
+                </Label>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="20" styleClass="form-container">
+                <padding>
+                    <Insets top="30" right="100" bottom="30" left="100"/>
+                </padding>
+                
+                <VBox spacing="8">
+                    <Label text="Название проекта *" styleClass="form-label"/>
+                    <TextField fx:id="nameField" promptText="Введите название проекта"/>
+                </VBox>
+                
+                <VBox spacing="8">
+                    <Label text="Клиент *" styleClass="form-label"/>
+                    <TextField fx:id="clientField" promptText="Введите имя клиента"/>
+                </VBox>
+                
+                <HBox spacing="20">
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Ставка (₽/час) *" styleClass="form-label"/>
+                        <TextField fx:id="rateField" promptText="0.00"/>
+                    </VBox>
+                    
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Отработано часов" styleClass="form-label"/>
+                        <TextField fx:id="hoursField" text="0" promptText="0.0"/>
+                    </VBox>
+                </HBox>
+                
+                <VBox spacing="8">
+                    <Label text="Статус" styleClass="form-label"/>
+                    <ComboBox fx:id="statusComboBox" prefWidth="200"/>
+                </VBox>
+                
+                <HBox spacing="20">
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Дата начала" styleClass="form-label"/>
+                        <DatePicker fx:id="startDatePicker"/>
+                    </VBox>
+                    
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Дата окончания" styleClass="form-label"/>
+                        <DatePicker fx:id="endDatePicker"/>
+                    </VBox>
+                </HBox>
+                
+                <VBox spacing="8">
+                    <Label text="Описание" styleClass="form-label"/>
+                    <TextArea fx:id="descriptionArea" prefRowCount="4" promptText="Описание проекта"/>
+                </VBox>
+                
+                <Separator/>
+                
+                <HBox spacing="15" alignment="CENTER_RIGHT">
+                    <Button text="Отмена" onAction="#handleCancel" styleClass="btn-secondary"/>
+                    <Button text="Сохранить" onAction="#handleSave" styleClass="btn-primary"/>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

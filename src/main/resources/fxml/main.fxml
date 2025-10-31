@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.freelance.controller.MainController" stylesheets="@../css/style.css">
+    
+    <top>
+        <VBox styleClass="header">
+            <HBox alignment="CENTER_LEFT" spacing="15" styleClass="toolbar">
+                <Label text="📊 Трекер фриланс-проектов" styleClass="title">
+                    <font>
+                        <Font name="System Bold" size="24"/>
+                    </font>
+                </Label>
+                <Region HBox.hgrow="ALWAYS"/>
+                <Button text="Проекты" onAction="#handleProjects" styleClass="btn-primary"/>
+                <Button text="Обновить" onAction="#handleRefresh" styleClass="btn-secondary"/>
+            </HBox>
+        </VBox>
+    </top>
+    
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="true">
+            <VBox spacing="20" styleClass="content-container">
+                <padding>
+                    <Insets top="20" right="30" bottom="20" left="30"/>
+                </padding>
+                
+                <Label text="Панель управления" styleClass="section-title">
+                    <font>
+                        <Font size="20" name="System Bold"/>
+                    </font>
+                </Label>
+                
+                <GridPane hgap="20" vgap="20">
+                    <columnConstraints>
+                        <ColumnConstraints percentWidth="25"/>
+                        <ColumnConstraints percentWidth="25"/>
+                        <ColumnConstraints percentWidth="25"/>
+                        <ColumnConstraints percentWidth="25"/>
+                    </columnConstraints>
+                    
+                    <VBox styleClass="stat-card" GridPane.columnIndex="0">
+                        <padding>
+                            <Insets top="15" right="15" bottom="15" left="15"/>
+                        </padding>
+                        <Label text="Всего проектов" styleClass="stat-label"/>
+                        <Label fx:id="totalProjectsLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    
+                    <VBox styleClass="stat-card" GridPane.columnIndex="1">
+                        <padding>
+                            <Insets top="15" right="15" bottom="15" left="15"/>
+                        </padding>
+                        <Label text="Активных" styleClass="stat-label"/>
+                        <Label fx:id="activeProjectsLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    
+                    <VBox styleClass="stat-card" GridPane.columnIndex="2">
+                        <padding>
+                            <Insets top="15" right="15" bottom="15" left="15"/>
+                        </padding>
+                        <Label text="Завершенных" styleClass="stat-label"/>
+                        <Label fx:id="completedProjectsLabel" text="0" styleClass="stat-value"/>
+                    </VBox>
+                    
+                    <VBox styleClass="stat-card" GridPane.columnIndex="3">
+                        <padding>
+                            <Insets top="15" right="15" bottom="15" left="15"/>
+                        </padding>
+                        <Label text="Общий доход" styleClass="stat-label"/>
+                        <Label fx:id="totalRevenueCardLabel" text="0.00 ₽" styleClass="stat-value"/>
+                    </VBox>
+                </GridPane>
+                
+                <HBox spacing="20">
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <Label text="Рентабельность" styleClass="card-title">
+                            <font>
+                                <Font size="16" name="System Bold"/>
+                            </font>
+                        </Label>
+                        <Separator/>
+                        <VBox spacing="10">
+                            <HBox>
+                                <Label text="Общий доход:" HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="totalRevenueLabel" text="0.00 ₽"/>
+                            </HBox>
+                            <HBox>
+                                <Label text="Отработано часов:" HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="totalHoursLabel" text="0.0 ч"/>
+                            </HBox>
+                            <HBox>
+                                <Label text="Средняя ставка:" HBox.hgrow="ALWAYS"/>
+                                <Label fx:id="avgRateLabel" text="0.00 ₽/ч"/>
+                            </HBox>
+                        </VBox>
+                    </VBox>
+                    
+                    <VBox styleClass="card" HBox.hgrow="ALWAYS">
+                        <padding>
+                            <Insets top="20" right="20" bottom="20" left="20"/>
+                        </padding>
+                        <Label text="Загруженность по неделям" styleClass="card-title">
+                            <font>
+                                <Font size="16" name="System Bold"/>
+                            </font>
+                        </Label>
+                        <Separator/>
+                        <VBox fx:id="workloadContainer" spacing="8"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
