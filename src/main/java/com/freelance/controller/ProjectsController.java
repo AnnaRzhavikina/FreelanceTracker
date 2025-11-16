@@ -23,7 +23,6 @@ import java.util.Optional;
  * Управляет отображением списка проектов, их созданием,
  * редактированием, удалением и экспортом в PDF.
  * </p>
- *
  */
 public class ProjectsController {
 
@@ -56,14 +55,12 @@ public class ProjectsController {
     private ObservableList<Project> projectsList;
 
     /**
-     * Конструктор с инъекцией зависимостей.
-     *
-     * @param projectService сервис для работы с проектами
-     * @param pdfExportService сервис для экспорта в PDF
+     * Конструктор по умолчанию.
+     * Создает экземпляры сервисов для работы с данными.
      */
-    public ProjectsController(ProjectService projectService, PdfExportService pdfExportService) {
-        this.projectService = projectService;
-        this.pdfExportService = pdfExportService;
+    public ProjectsController() {
+        this.projectService = new ProjectService();
+        this.pdfExportService = new PdfExportService(projectService);
     }
 
     /**
@@ -76,9 +73,11 @@ public class ProjectsController {
         loadProjects();
     }
 
-    /**
-     * Настраивает колонки таблицы проектов.
-     */
+    // Остальные методы остаются БЕЗ ИЗМЕНЕНИЙ
+    // (setupTable, loadProjects, updateStatistics, handleNewProject,
+    //  handleEdit, handleDelete, handleExportPdf, handleBack,
+    //  showAlert, showInfo)
+
     private void setupTable() {
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         clientColumn.setCellValueFactory(new PropertyValueFactory<>("client"));
@@ -103,9 +102,6 @@ public class ProjectsController {
         });
     }
 
-    /**
-     * Загружает список проектов из базы данных.
-     */
     private void loadProjects() {
         List<Project> projects = projectService.getAllProjects();
         projectsList = FXCollections.observableArrayList(projects);
@@ -113,32 +109,17 @@ public class ProjectsController {
         updateStatistics();
     }
 
-    /**
-     * Обновляет статистику на экране.
-     */
     private void updateStatistics() {
         var profitability = projectService.calculateOverallProfitability();
         totalRevenueLabel.setText(String.format("%.2f ₽", profitability.get("totalRevenue")));
         totalHoursLabel.setText(String.format("%.1f ч", profitability.get("totalHours")));
     }
 
-    /**
-     * Открывает форму создания нового проекта.
-     * Обработчик кнопки "Новый проект".
-     *
-     * @throws IOException если не удается загрузить FXML
-     */
     @FXML
     private void handleNewProject() throws IOException {
         MainApp.loadScene("/fxml/project-form.fxml", "Новый проект");
     }
 
-    /**
-     * Открывает форму редактирования выбранного проекта.
-     * Обработчик кнопки "Редактировать".
-     *
-     * @throws IOException если не удается загрузить FXML
-     */
     @FXML
     private void handleEdit() throws IOException {
         Project selected = projectsTable.getSelectionModel().getSelectedItem();
@@ -149,10 +130,6 @@ public class ProjectsController {
         }
     }
 
-    /**
-     * Удаляет выбранный проект после подтверждения.
-     * Обработчик кнопки "Удалить".
-     */
     @FXML
     private void handleDelete() {
         Project selected = projectsTable.getSelectionModel().getSelectedItem();
@@ -172,17 +149,13 @@ public class ProjectsController {
         }
     }
 
-    /**
-     * Экспортирует отчет по проектам в PDF файл.
-     * Обработчик кнопки "Экспорт в PDF".
-     */
     @FXML
     private void handleExportPdf() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Сохранить отчет");
         fileChooser.setInitialFileName("freelance_report.pdf");
         fileChooser.getExtensionFilters().add(
-            new FileChooser.ExtensionFilter("PDF файлы", "*.pdf")
+                new FileChooser.ExtensionFilter("PDF файлы", "*.pdf")
         );
 
         File file = fileChooser.showSaveDialog(MainApp.getPrimaryStage());
@@ -199,23 +172,11 @@ public class ProjectsController {
         }
     }
 
-    /**
-     * Возвращает на главную страницу.
-     * Обработчик кнопки "Назад".
-     *
-     * @throws IOException если не удается загрузить FXML
-     */
     @FXML
     private void handleBack() throws IOException {
         MainApp.loadScene("/fxml/main.fxml", "Трекер фриланс-проектов");
     }
 
-    /**
-     * Отображает диалог с сообщением об ошибке.
-     *
-     * @param title заголовок диалога
-     * @param message текст сообщения
-     */
     private void showAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle(title);
@@ -224,12 +185,6 @@ public class ProjectsController {
         alert.showAndWait();
     }
 
-    /**
-     * Отображает диалог с информационным сообщением.
-     *
-     * @param title заголовок диалога
-     * @param message текст сообщения
-     */
     private void showInfo(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);

@@ -15,7 +15,6 @@ import java.util.Map;
  * Отображает панель управления с общей статистикой по проектам,
  * рентабельностью и загруженностью по неделям.
  * </p>
- *
  */
 public class MainController {
 
@@ -46,12 +45,11 @@ public class MainController {
     private final ProjectService projectService;
 
     /**
-     * Конструктор с инъекцией зависимости ProjectService.
-     *
-     * @param projectService сервис для работы с проектами
+     * Конструктор по умолчанию.
+     * Создает экземпляр ProjectService для работы с данными.
      */
-    public MainController(ProjectService projectService) {
-        this.projectService = projectService;
+    public MainController() {
+        this.projectService = new ProjectService();
     }
 
     /**
@@ -93,8 +91,8 @@ public class MainController {
         workloadContainer.getChildren().clear();
 
         for (Map.Entry<String, Double> entry : workload.entrySet()) {
-            Label weekLabel = new Label(entry.getKey() + ": " + 
-                String.format("%.1f часов", entry.getValue()));
+            Label weekLabel = new Label(entry.getKey() + ": " +
+                    String.format("%.1f часов", entry.getValue()));
             weekLabel.getStyleClass().add("workload-item");
             workloadContainer.getChildren().add(weekLabel);
         }
